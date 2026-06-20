@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { User } from "@/types/user";
+import { Platform } from "react-native";
 
 type AuthState = {
     isLoggedIn: boolean;
@@ -11,6 +12,8 @@ type AuthState = {
     login: (user: User, token: string) => void;
     logout: () => void; // 💡 VoidFunction 대신 표준 화살표 함수 타입으로 직관적으로 변경
 };
+
+const storage = Platform.OS === "web" ? createJSONStorage(() => localStorage) : createJSONStorage(() => AsyncStorage);
 
 export const useAuthStore = create<AuthState>()(
     persist(
@@ -23,7 +26,7 @@ export const useAuthStore = create<AuthState>()(
         }),
         {
             name: "auth-storage",
-            storage: createJSONStorage(() => AsyncStorage),
+            storage,
         },
     ),
 );
