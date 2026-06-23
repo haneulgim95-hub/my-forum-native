@@ -17,7 +17,7 @@ function Input({
     return (
         <TextInput
             className={twMerge(
-                "w-full bg-background-default rounded-lg border",
+                "w-full bg-background-default rounded-lg border text-text-default",
                 BUTTON_SIZE_STYLE[size],
                 hasError ? "border-error-main" : "border-divider focus:border-primary-main",
                 className,
