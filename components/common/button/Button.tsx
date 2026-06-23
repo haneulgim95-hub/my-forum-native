@@ -1,5 +1,6 @@
 import { Pressable, PressableProps, Text } from "react-native";
-import { StyleColorType, StyleSizeType, StyleVariantType } from "@/types/style";
+import { BUTTON_SIZE_STYLE, StyleColorType, StyleSizeType, StyleVariantType } from "@/types/style";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends PressableProps {
     color?: StyleColorType;
@@ -8,7 +9,7 @@ interface Props extends PressableProps {
     fullWidth?: boolean;
 }
 
-function MyButton({
+function Button({
     color = "primary",
     variant = "contained",
     size = "medium",
@@ -21,10 +22,10 @@ function MyButton({
         switch (variant) {
             case "contained":
                 return `bg-${color}-main`;
-            case "text":
-                return `bg-transparent`;
             case "outlined":
                 return `border border-${color}-main bg-transparent`;
+            case "text":
+                return `bg-transparent`;
             case "icon":
                 return `rounded-full p-2`;
         }
@@ -35,24 +36,24 @@ function MyButton({
         return `text-${color}-main`;
     };
 
-    const BUTTON_SIZE_STYLE = {
-        small: "px-2 py-1",
-        medium: "px-3 py-2",
-        large: "px-5 py-3",
-    };
-
-    const TEXT_SIZE_STYLE = {
-        small: "text-xs",
-        medium: "text-sm",
-        large: "text-base",
-    };
-
     return (
         <Pressable
-            className={`flex items-center justify-center rounded-md ${getVariantClasses()} ${getTextColorClasses()} ${fullWidth ? "w-full" : ""} ${BUTTON_SIZE_STYLE[size]} ${className}`}
+            className={twMerge(
+                "flex justify-center items-center rounded-md font-bold",
+                BUTTON_SIZE_STYLE[size],
+                getVariantClasses(),
+                getTextColorClasses(),
+                fullWidth ? "w-full" : "",
+                className,
+            )}
             {...props}>
             {typeof children === "string" ? (
-                <Text className={`${getTextColorClasses()} ${TEXT_SIZE_STYLE[size]} font-bold`}>
+                <Text
+                    className={twMerge(
+                        "font-bold text-sm",
+                        getTextColorClasses(),
+                        size === "small" ? "text-xs" : size === "large" ? "text-base" : "text-sm",
+                    )}>
                     {children}
                 </Text>
             ) : (
@@ -62,4 +63,4 @@ function MyButton({
     );
 }
 
-export default MyButton;
+export default Button;
