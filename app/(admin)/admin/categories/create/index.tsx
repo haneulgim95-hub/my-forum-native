@@ -23,6 +23,9 @@ function AdminCategoryCreatePage() {
     } = useForm<AdminCategoryInputType>({
         resolver: zodResolver(adminCategorySchema),
         mode: "onTouched",
+        defaultValues: {
+            name: "",
+        },
     });
 
     const onSubmit = async (data: AdminCategoryInputType) => {
