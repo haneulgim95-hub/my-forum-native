@@ -7,8 +7,6 @@ import AdminAsideMobile from "@/components/layouts/admin/AdminAsideMobile";
 function AdminLayout() {
     return (
         <View className={twMerge("flex-1", "flex-col", "md:flex-row")}>
-            {/* hidden -> display: hidden, flex -> display: flex */}
-            {/* 화면이 작을 대(기본값)은 hidden이 적용될 것이고, 화면이 768px을 넘어가면 flex로 적용 */}
             <View className={twMerge("hidden", "md:flex", "h-full")}>
                 <AdminAsideDesktop />
             </View>
