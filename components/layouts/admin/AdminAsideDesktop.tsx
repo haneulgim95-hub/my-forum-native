@@ -40,20 +40,20 @@ function AdminAsideDesktop() {
                                         ["flex-row", "items-center", "gap-3", "px-4", "py-3.5"],
                                         ["rounded-xl", "transition-all"],
                                         isActive
-                                            ? "bg-primary-main/10"
+                                            ? "bg-primary-main"
                                             : "hover:bg-background-default",
                                     )}>
                                     <Feather
                                         name={item.icon as any}
                                         size={18}
                                         className={
-                                            isActive ? "text-primary-main" : "text-text-secondary"
+                                            isActive ? "text-primary-contrast" : "text-text-secondary"
                                         }
                                     />
                                     <TextComponent
                                         className={twMerge(
                                             "font-bold",
-                                            isActive ? "text-primary-main" : "text-text-default",
+                                            isActive ? "text-primary-contrast" : "text-text-default",
                                         )}>
                                         {item.label}
                                     </TextComponent>

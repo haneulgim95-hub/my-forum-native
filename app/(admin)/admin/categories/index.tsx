@@ -1,6 +1,6 @@
 import TextComponent from "@/components/common/text/TextComponent";
 import { useEffect, useState } from "react";
-import { Category } from "@/types/category.type";
+import { Category } from "@/types/category";
 import { Alert, Platform, Pressable, ScrollView, View } from "react-native";
 import adminCategoryApi from "@/api/admin/adminCategoryApi";
 import LoadingIndicator from "@/components/common/loading/LoadingIndicator";
