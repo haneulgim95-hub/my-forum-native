@@ -36,11 +36,11 @@ function Badge({
     const getSizeClasses = () => {
         switch (size) {
             case "small":
-                return `px-2 py-0.5`;
+                return `px-2 py-0.5 text-xs`;
             case "medium":
-                return `px-2.5 py-1`;
+                return `px-2.5 py-1 text-sm`;
             case "large":
-                return "px-3 py-1.5";
+                return "px-3 py-1.5 text-base";
         }
     };
 

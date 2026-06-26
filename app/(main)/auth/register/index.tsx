@@ -67,15 +67,25 @@ function Register() {
             }
         } catch (error) {
             console.log(error);
-            let errorMessage = "회원가입 중 오류가 발생했습니다.";
 
-            if (isAxiosError(error)) {
-                errorMessage = error.response?.data?.message || errorMessage;
-            } else if (error instanceof Error) {
-                errorMessage = error.message;
+            if (isAxiosError(error) && error.response) {
+                const errorMessage = error.response.data.errorMessage;
+                if (error.response.status === 409) {
+                    if (errorMessage.includes("아이디")) {
+                        setError("username", { message: errorMessage });
+                    } else if (errorMessage.includes("닉네임")) {
+                        setError("nickname", { message: errorMessage });
+                    } else if (errorMessage.includes("email")) {
+                        setError("email", { message: errorMessage });
+                    } else {
+                        setError("root", { message: errorMessage });
+                    }
+                    return;
+                }
+                setError("root", { message: errorMessage });
+            } else {
+                setError("root", { message: "알수 없는 오류가 발생했습니다." });
             }
-
-            setError("root", { message: errorMessage });
         }
     };
 
