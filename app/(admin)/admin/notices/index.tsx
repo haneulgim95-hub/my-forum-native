@@ -45,7 +45,7 @@ function AdminNoticeListPage() {
                 title={"공지사항 관리"}
                 description={"서비스의 주요 소식 및 공지사항을 관리합니다."}>
                 <Button
-                    vatiant={"contained"}
+                    variant={"contained"}
                     color={"primary"}
                     onPress={() => router.push("/admin/notices/create")}>
                     + 공지사항 등록
