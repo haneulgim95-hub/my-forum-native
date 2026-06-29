@@ -5,3 +5,10 @@ export const ADMIN_NAV_LIST = [
     { path: "/admin/inquiries", label: "1:1 문의 관리", icon: "message-square" },
     { path: "/", label: "서비스로 돌아가기", icon: "home" },
 ];
+
+export const MYPAGE_NAV_LIST = [
+    { path: "/my/profile", label: "회원정보 수정" },
+    { path: "/my/password", label: "비밀번호 변경" },
+    { path: "/my/inquiry", label: "1:1 문의 내역" },
+    { path: "/my/withdraw", label: "회원 탈퇴", isDanger: true },
+];
