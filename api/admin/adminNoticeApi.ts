@@ -7,4 +7,8 @@ const createNotice = async (input: AdminNoticeInputType): Promise<Notice> => {
     return response.data.data;
 };
 
-export default { createNotice };
+const deleteNotice = async (id: number): Promise<void> => {
+    await axiosInstance.delete(`/admin/notice/${id}`);
+};
+
+export default { createNotice, deleteNotice };

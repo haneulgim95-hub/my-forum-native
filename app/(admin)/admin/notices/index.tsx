@@ -111,7 +111,7 @@ function AdminNoticeListPage() {
                             </TextComponent>
                             <Pressable
                                 className={twMerge("flex-1", "justify-center", "px-2")}
-                                onPres={() => router.push(`/admin/notines/${item.id}`)}>
+                                onPress={() => router.push(`/admin/notices/${item.id}`)}>
                                 <TextComponent
                                     className={twMerge([
                                         "font-bold",
