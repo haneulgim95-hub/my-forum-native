@@ -1,9 +1,8 @@
 import { useRouter, Link } from "expo-router";
 import { useThemeStore } from "@/stores/theme/useThemeStore";
 import { useAuthStore } from "@/stores/auth/useAuthStore";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Category } from "@/types/category";
-import categoryApi from "@/api/user/categoryApi";
 import { twMerge } from "tailwind-merge";
 import TextComponent from "@/components/common/text/TextComponent";
 import { Feather, Ionicons } from "@expo/vector-icons";
@@ -14,25 +13,17 @@ import { Role } from "@/types/user";
 import Button from "@/components/common/button/Button";
 import Accordion from "@/components/common/accordion/Accordion";
 
-function MainHeaderMobile() {
+interface Props {
+    list: Category[];
+}
+
+function MainHeaderMobile({list}:Props) {
     const router = useRouter();
     const { theme, onChangeTheme } = useThemeStore();
     const { isLoggedIn, user, logout } = useAuthStore();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [list, setList] = useState<Category[]>([]);
 
-    useEffect(() => {
-        const loadCategories = async () => {
-            try {
-                const result = await categoryApi.getCategoryList();
-                setList(result);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        loadCategories().then(() => {});
-    }, []);
 
     const handleNavigate = (path: string) => {
         setIsMenuOpen(false);
