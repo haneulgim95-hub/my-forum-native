@@ -6,6 +6,7 @@ import MainHeaderDesktop from "@/components/layouts/main/MainHeaderDesktop";
 import { useEffect, useState } from "react";
 import { Category } from "@/types/category";
 import categoryApi from "@/api/user/categoryApi";
+import { twMerge } from "tailwind-merge";
 
 function MainLayout() {
     const { width } = useWindowDimensions();
@@ -27,8 +28,16 @@ function MainLayout() {
 
     return (
         <View className={"flex-1"}>
-            {isMobile ? <MainHeaderMobile list={list}/> : <MainHeaderDesktop list={list}/>}
-            <View className={"flex-1"}>
+            {isMobile ? <MainHeaderMobile list={list} /> : <MainHeaderDesktop list={list} />}
+            <View
+                className={twMerge(
+                    "flex-1",
+                    "w-full",
+                    "max-w-7xl",
+                    "p-4",
+                    "md:py-8",
+                    "self-center",
+                )}>
                 <Slot />
             </View>
             <MainFooter />
