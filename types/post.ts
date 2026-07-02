@@ -19,3 +19,13 @@ export type PostUser = Pick<User, "id" | "nickname" | "email">
 export interface PostListItemType extends Post {
     user: PostUser;
 }
+
+export interface PostDetailItemType extends Post {
+    user: PostUser;
+    vote: {
+        option1Count: number;
+        option2Count: number;
+        totalCount: number;
+        hasVoted: boolean;
+    }
+}
